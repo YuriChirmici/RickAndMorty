@@ -54,6 +54,8 @@ const toggleIsFetching = (isFetching) => (
 	{type: TOGGLE_IS_FETCHING, isFetching}
 );
 
+const capitalize = (str) => str[0].toUpperCase() + str.substring(1);
+
 export const requestNewCharacter = (characterId, characters) => async (dispatch) => {
 	if(characterId in characters) {
 		dispatch(setCurrentCharacter(characterId))
@@ -63,7 +65,7 @@ export const requestNewCharacter = (characterId, characters) => async (dispatch)
 		let character = {
 			id: result.id,
 			name: result.name,
-			status: result.status,
+			status: capitalize(result.status),
 			species: result.species,
 			gender: result.gender,
 			origin: result.origin.name,

@@ -1,0 +1,18 @@
+.header {
+	width: 100%;
+	text-align: center;
+	font-size: 26px;
+	margin: 10px 0;
+}
+
+@media (max-width: 641px) {
+	.header {
+		font-size: 22px
+	}
+}
+
+@media (max-width: 421px) {
+	.header {
+		font-size: 18px
+	}
+}
