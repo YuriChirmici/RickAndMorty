@@ -1,11 +1,12 @@
 import Character from "./Character";
 import {connect} from "react-redux";
 import {requestNewCharacter, requestCharactersCount} from "../../redux/characters-reducer";
-import {getCharacter, getCharactersCount, getIsFetching} from "../../redux/characters-selectors";
+import {getCurrentCharacter, getCharacters, getCharactersCount, getIsFetching} from "../../redux/characters-selectors";
 
 const mapStateToProps = (state) => {
 	return {
-		character: getCharacter(state),
+		currentCharacterId: getCurrentCharacter(state),
+		characters: getCharacters(state),
 		count: getCharactersCount(state),
 		isFetching: getIsFetching(state),
 	}

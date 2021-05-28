@@ -2,9 +2,10 @@ import styles from "./Character.module.css";
 import {useEffect} from "react";
 
 const Character = (props) => {
-	const getNewCharacter = (count) => {
-		let newId = Math.floor(Math.random() * count - 1);
-		props.requestNewCharacter(newId)
+	const currentCharacter = props.characters[props.currentCharacterId];
+	const getCharacter = (count) => {
+		let newId = Math.floor(Math.random() * (count - 1)) + 1;
+		props.requestNewCharacter(newId, props.characters)
 	}
 
 	useEffect( () => {
@@ -12,7 +13,7 @@ const Character = (props) => {
 			props.requestCharactersCount();
 		}
 		else {
-			getNewCharacter(props.count);
+			getCharacter(props.count);
 		}
 	}, [props.count])
 
@@ -22,15 +23,15 @@ const Character = (props) => {
 				<div>...loading</div>
 			:
 			<>
-				<img src={props.character.image} alt="" />
-				<div>name: {props.character.name}</div>
-				<div>status: {props.character.status}</div>
-				<div>species: {props.character.species}</div>
-				<div>gender: {props.character.gender}</div>
-				<div>origin: {props.character.origin}</div>
-				<div>location: {props.character.location}</div>
-				<button onClick={() => getNewCharacter(props.count)}>
-					New character
+				<img src={currentCharacter.image} alt="" />
+				<div>name: {currentCharacter.name}</div>
+				<div>status: {currentCharacter.status}</div>
+				<div>species: {currentCharacter.species}</div>
+				<div>gender: {currentCharacter.gender}</div>
+				<div>origin: {currentCharacter.origin}</div>
+				<div>location: {currentCharacter.location}</div>
+				<button onClick={() => getCharacter(props.count)}>
+					Get new character
 				</button>
 			</>
 			}

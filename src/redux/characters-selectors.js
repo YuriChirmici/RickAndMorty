@@ -1,4 +1,6 @@
-export const getCharacter = (state) => state.characters.character;
+export const getCurrentCharacter = (state) => state.characters.currentCharacterId;
+
+export const getCharacters = (state) => state.characters.characters;
 
 export const getCharactersCount = (state) => state.characters.count;
 
